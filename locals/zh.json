@@ -704,5 +704,21 @@
     "Bold folders in the path": "在路径中加粗文件夹",
     "Make the folder name bold in the path above a note": "在笔记上方路径中加粗文件夹名称",
     "Cursive the name of folder notes in the path": "在路径中将文件夹笔记名称设为斜体",
-    "Make the folder name cursive in the path above a note": "在笔记上方路径中将文件夹名称设为斜体"
+    "Make the folder name cursive in the path above a note": "在笔记上方路径中将文件夹名称设为斜体",
+    "Add {regex} at the beginning of the folder name to use a regex pattern.": "在文件夹名称开头添加 {regex} 以使用正则表达式模式。",
+    "Use * before and after to exclude folders that include the name between the *s.": "在名称前后使用 * 来排除包含 * 之间名称的文件夹。",
+    "Use * before the folder name to exclude folders that end with the folder name.": "在文件夹名称前使用 * 来排除以该文件夹名称结尾的文件夹。",
+    "Use * after the folder name to exclude folders that start with the folder name.": "在文件夹名称后使用 * 来排除以该文件夹名称开头的文件夹。",
+    "The regexes and wildcards are only for the folder name, not the path.": "正则表达式和通配符仅适用于文件夹名称，而非路径。",
+    "If you want to switch to a folder path delete the pattern first.": "如果想切换到文件夹路径，请先删除模式。",
+    "Choose the file types that should be supported for folder notes. (e.g. if you click on a folder name it searches for all file extensions that are supported)": "选择应支持的文件夹笔记文件类型。（例如，点击文件夹名称时，会搜索所有支持的文件扩展名）",
+    "Adding more file types may cause performance issues becareful when adding more file types and don't add too many.": "添加更多文件类型可能会导致性能问题，添加更多文件类型时要小心，不要添加太多。",
+    "Requires a restart to take effect": "需要重启才能生效",
+    "Chameleon": "变色龙",
+    "Chameleon: A translation plugin for Obsidian that provides multilingual support.": "变色龙：为 Obsidian 提供多语言支持的翻译插件。",
+    "Folder notes": "文件夹笔记",
+    "Create notes within folders that can be accessed without collapsing the folder, similar to the functionality offered in Notion.": "在文件夹内创建笔记，无需折叠文件夹即可访问，类似于 Notion 提供的功能。",
+    "Smart Second Brain": "智能第二大脑",
+    "Interact with your privacy focused assistant, leveraging Ollama or OpenAI, making your second brain even smarter.": "与注重隐私的助手互动，利用 Ollama 或 OpenAI，让你的第二大脑更加智能。",
+    "Expand lists to full width in list view": "在列表视图中将列表扩展到全宽"
 }
