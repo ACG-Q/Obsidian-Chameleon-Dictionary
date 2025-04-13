@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "Obsidian变色龙字典",
+    "subtitle": "管理Obsidian插件的多语言翻译资源"
+  },
+  "common": {
+    "add": "添加",
+    "edit": "编辑",
+    "delete": "删除",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "reset": "重置",
+    "resetAll": "重置全部",
+    "success": "操作成功",
+    "error": "操作失败",
+    "warning": "警告",
+    "yes": "是",
+    "no": "否",
+    "loading": "加载中",
+    "deleteSuccess": "删除成功",
+    "autoTranslate": "自动翻译"
+  },
+  "translation": {
+    "list": "翻译列表",
+    "original": "原文",
+    "translated": "译文",
+    "addNew": "添加新翻译",
+    "searchPlaceholder": "搜索原文或译文",
+    "filterStatus": "筛选状态",
+    "filterAll": "全部",
+    "filterTranslated": "已翻译",
+    "filterUntranslated": "未翻译",
+    "untranslated": "未翻译",
+    "actions": "操作",
+    "deleteConfirm": "确定要删除这条翻译吗？",
+    "resetAllConfirm": "确定要重置所有翻译吗？",
+    "keyRequired": "原文不能为空",
+    "addSuccess": "添加成功",
+    "originalPlaceholder": "请输入原文",
+    "translatedPlaceholder": "请输入译文",
+    "key": "键值",
+    "sourceText": "源文本"
+  },
+  "import": {
+    "title": "导入翻译",
+    "textImport": "文本导入",
+    "fileImport": "文件导入",
+    "onlineImport": "在线导入",
+    "format": "格式",
+    "plainText": "纯文本",
+    "content": "内容",
+    "dragFile": "拖拽文件到此处或点击上传",
+    "supportFormats": "支持的格式：JSON, ZIP",
+    "url": "URL地址",
+    "urlPlaceholder": "请输入JSON文件的URL地址",
+    "import": "导入",
+    "noContent": "没有可导入的内容"
+  },
+  "export": {
+    "title": "导出翻译",
+    "format": "格式",
+    "filename": "文件名",
+    "filenamePlaceholder": "请输入文件名",
+    "includeReadme": "包含README文件",
+    "preview": "预览",
+    "export": "导出",
+    "singleExport": "单个导出",
+    "multiExport": "批量导出",
+    "dictionaryExport": "字典导出",
+    "totalItems": "总条目数",
+    "translatedItems": "已翻译条目",
+    "untranslatedItems": "未翻译条目",
+    "missingTranslations": "缺失的翻译",
+    "andMoreItems": "还有 {count} 个更多条目",
+    "zipPreview": "ZIP文件将包含以下文件"
+  },
+  "stats": {
+    "title": "翻译统计",
+    "total": "总条目",
+    "translated": "已翻译",
+    "untranslated": "未翻译",
+    "progress": "翻译进度",
+    "byLanguage": "按语言统计",
+    "overallProgress": "总体进度",
+    "currentLanguage": "当前语言",
+    "refresh": "刷新统计"
+  },
+  "language": {
+    "select": "选择语言",
+    "name": "语言名称"
+  },
+  "dictionary": {
+    "loadSuccess": "默认字典加载成功",
+    "languageChanged": "语言已更改"
+  }
+}

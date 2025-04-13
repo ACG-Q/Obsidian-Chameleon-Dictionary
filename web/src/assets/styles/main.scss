@@ -1,0 +1,101 @@
+/* 主样式文件 */
+@use './reset.scss';
+
+/* BEM命名规范的全局样式 */
+:root {
+  --app-max-width: 1200px;
+  --app-border-radius: 8px;
+  --app-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  --app-transition: all 0.3s ease;
+}
+
+/* 全局容器 */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--el-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 卡片样式增强 */
+.enhanced-card {
+  width: 100%;
+  max-width: var(--app-max-width);
+  border-radius: var(--app-border-radius);
+  box-shadow: var(--app-box-shadow);
+  transition: var(--app-transition);
+  
+  &:hover {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* 玻璃效果 */
+.glass-effect {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 功能卡片 */
+.function-card {
+  margin-bottom: 20px;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--el-text-color-primary);
+  }
+  
+  &__content {
+    padding: 10px 0;
+  }
+}
+
+/* 表单样式 */
+.form-section {
+  margin-bottom: 24px;
+  
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--el-text-color-regular);
+  }
+  
+  &__content {
+    padding: 8px 0;
+  }
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+  }
+  
+  .enhanced-card {
+    border-radius: 4px;
+  }
+}

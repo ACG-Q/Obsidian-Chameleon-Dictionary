@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "Obsidian Chameleon Dictionary",
+    "subtitle": "Manage multilingual translation resources for Obsidian plugins"
+  },
+  "common": {
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "reset": "Reset",
+    "resetAll": "Reset All",
+    "success": "Operation Success",
+    "error": "Operation Failed",
+    "warning": "Warning",
+    "yes": "Yes",
+    "no": "No",
+    "loading": "Loading",
+    "deleteSuccess": "Delete Success",
+    "autoTranslate": "Auto Translate"
+  },
+  "translation": {
+    "list": "List",
+    "original": "Original",
+    "translated": "Translated",
+    "addNew": "Add New Translation",
+    "searchPlaceholder": "Search original or translation",
+    "filterStatus": "Filter Status",
+    "filterAll": "All",
+    "filterTranslated": "Translated",
+    "filterUntranslated": "Untranslated",
+    "untranslated": "Untranslated",
+    "actions": "Actions",
+    "deleteConfirm": "Are you sure you want to delete this translation?",
+    "resetAllConfirm": "Are you sure you want to reset all translations?",
+    "keyRequired": "Original text cannot be empty",
+    "addSuccess": "Added successfully",
+    "originalPlaceholder": "Enter original text",
+    "translatedPlaceholder": "Enter translation",
+    "key": "Key",
+    "sourceText": "Source Text"
+  },
+  "import": {
+    "title": "Import Translations",
+    "textImport": "Text Import",
+    "fileImport": "File Import",
+    "onlineImport": "Online Import",
+    "format": "Format",
+    "plainText": "Plain Text",
+    "content": "Content",
+    "dragFile": "Drag file here or click to upload",
+    "supportFormats": "Supported formats: JSON, ZIP",
+    "url": "URL Address",
+    "urlPlaceholder": "Enter URL of JSON file",
+    "import": "Import",
+    "noContent": "No content to import"
+  },
+  "export": {
+    "title": "Export Translations",
+    "format": "Format",
+    "filename": "Filename",
+    "filenamePlaceholder": "Enter filename",
+    "includeReadme": "Include README file",
+    "preview": "Preview",
+    "export": "Export",
+    "singleExport": "Single Export",
+    "multiExport": "Multiple Export",
+    "dictionaryExport": "Dictionary Export",
+    "totalItems": "Total Items",
+    "translatedItems": "Translated Items",
+    "untranslatedItems": "Untranslated Items",
+    "missingTranslations": "Missing Translations",
+    "andMoreItems": "And {count} more items",
+    "zipPreview": "ZIP file will contain the following files"
+  },
+  "stats": {
+    "title": "Translation Statistics",
+    "total": "Total Items",
+    "translated": "Translated",
+    "untranslated": "Untranslated",
+    "progress": "Translation Progress",
+    "byLanguage": "Statistics by Language",
+    "overallProgress": "Overall Progress",
+    "currentLanguage": "Current Language",
+    "refresh": "Refresh Statistics"
+  },
+  "language": {
+    "select": "Select Language",
+    "name": "Language"
+  },
+  "dictionary": {
+    "loadSuccess": "Default Dictionary Load Success",
+    "languageChanged": "Language Changed"
+  }
+}
