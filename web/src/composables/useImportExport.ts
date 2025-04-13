@@ -3,7 +3,7 @@
  * 提供字典导入、导出等功能
  */
 import { ref } from 'vue'
-import { ElMessage, type UploadFile } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 import { useTranslationStore } from '../stores'

@@ -56,6 +56,7 @@ const props = defineProps<{
 // 新翻译表单
 const newTranslation = ref<Translation>({
   key: '',
+  sourceText: '', // 添加缺少的sourceText属性
   value: ''
 });
 
@@ -81,6 +82,7 @@ function addTranslation(): void {
 function resetForm(): void {
   newTranslation.value = {
     key: '',
+    sourceText: '', // 添加缺少的sourceText属性
     value: ''
   };
 }

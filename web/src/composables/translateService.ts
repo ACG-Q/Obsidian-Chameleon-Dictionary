@@ -6,9 +6,8 @@ export const useTranslateService = () => {
   /**
    * 自动翻译实现
    * @param sourceText 原文内容
-   * @param targetLang 目标语言代码
    */
-  const autoTranslate = async (sourceText: string, targetLang: string): Promise<string> => {
+  const autoTranslate = async (sourceText: string): Promise<string> => {
     try {
       isTranslating.value = true;
       

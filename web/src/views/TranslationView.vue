@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, ref, watch} from 'vue'
 import {useI18n} from 'vue-i18n'
-import {ElMessage, type UploadFile} from 'element-plus'
+import {ElMessage} from 'element-plus'
 import TranslationHeader from '../components/features/TranslationHeader.vue'
 import TranslationList from '../components/features/TranslationList.vue'
 import TranslationForm from '../components/features/TranslationForm.vue'
