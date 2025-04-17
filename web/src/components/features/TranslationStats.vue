@@ -1,7 +1,40 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import type { LanguageStats } from '../../stores/translationStore';
+
+// 使用i18n
+const { t } = useI18n();
+
+interface IProps {
+  totalItems: number;
+  translatedCount: number;
+  allLanguagesStats: LanguageStats[];
+  currentLanguages: string;
+}
+
+const props = defineProps<IProps>()
+
+// 计算属性
+const untranslatedCount = computed(() => {
+  return props.totalItems - props.translatedCount;
+});
+
+const progressPercentage = computed(() => {
+  if (props.totalItems === 0) return 0;
+  return Math.round((props.translatedCount / props.totalItems) * 100);
+});
+
+// 格式化进度显示
+const progressFormat = (percentage: number) => {
+  return `${percentage}% (${props.translatedCount}/${props.totalItems})`;
+};
+</script>
+
 <template>
   <div class="translation-stats function-card enhanced-card">
     <div class="function-card__header">
-      <h3 class="function-card__title">{{ t('stats.title') }}</h3>
+      <h3 class="function-card__title">{{ t('stats.title') }} -- {{ props.currentLanguages  }}</h3>
     </div>
     
     <div class="function-card__content">
@@ -54,38 +87,6 @@
     </el-table>
   </div>
 </template>
-
-<script setup lang="ts">
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import type { LanguageStats } from '../../stores/translationStore';
-
-// 使用i18n
-const { t } = useI18n();
-
-interface IProps {
-  totalItems: number;
-  translatedCount: number;
-  allLanguagesStats: LanguageStats[];
-}
-
-const props = defineProps<IProps>()
-
-// 计算属性
-const untranslatedCount = computed(() => {
-  return props.totalItems - props.translatedCount;
-});
-
-const progressPercentage = computed(() => {
-  if (props.totalItems === 0) return 0;
-  return Math.round((props.translatedCount / props.totalItems) * 100);
-});
-
-// 格式化进度显示
-const progressFormat = (percentage: number) => {
-  return `${percentage}% (${props.translatedCount}/${props.totalItems})`;
-};
-</script>
 
 <style lang="scss" scoped>
 .translation-stats {

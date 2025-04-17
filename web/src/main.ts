@@ -5,11 +5,9 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './style.css'
 import './assets/styles/main.scss'
 import App from './App.vue'
-import router from './router'
 import i18n from './i18n'
 
-// 导入自定义指令和工具函数
-import utils from './utils/index'
+// 导入Pinia状态管理
 import { createPinia } from 'pinia'
 
 // 创建应用实例
@@ -22,10 +20,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 // 使用插件
 app.use(createPinia())
-app.use(router)
 app.use(i18n)
 app.use(ElementPlus)
-app.use(utils)
 
 // 挂载应用
 app.mount('#app')

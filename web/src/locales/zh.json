@@ -51,7 +51,7 @@
     "plainText": "纯文本",
     "content": "内容",
     "dragFile": "拖拽文件到此处或点击上传",
-    "supportFormats": "支持的格式：JSON, ZIP",
+    "supportFormats": "支持的格式：JSON",
     "url": "URL地址",
     "urlPlaceholder": "请输入JSON文件的URL地址",
     "import": "导入",

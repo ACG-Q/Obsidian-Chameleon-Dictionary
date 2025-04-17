@@ -4,4 +4,4 @@
  */
 
 export { useImportExport } from './useImportExport'
-export { useTranslationManager } from './useTranslationManager'
+export * from './translation-manager'

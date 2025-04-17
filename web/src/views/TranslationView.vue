@@ -51,7 +51,11 @@ watch(activeTab, async (newTab) => {
 async function loadDictionary(): Promise<void> {
   try {
     translationStore.loading = true;
-    // todo: 修改为导入当前仓库的字典
+    // 导入字典文件，这会提取原文和译文
+    await importExport.importFromUrl("https://github.com/ACG-Q/Obsidian-Chameleon-Dictionary/raw/refs/heads/main/dictionary.json")
+
+    // 确保原文被正确保存到sourceTexts中，并加载当前语言的翻译
+    // 这样即使切换语言，原文也会保留
     await translationStore.loadTranslations(translationStore.currentLanguage);
     filterTranslations();
     ElMessage.success(t('dictionary.loadSuccess'));
@@ -68,6 +72,8 @@ async function loadDictionary(): Promise<void> {
 async function handleLanguageChange(langCode: string): Promise<void> {
   try {
     translationStore.loading = true;
+    // 加载指定语言的翻译，原文会保留在sourceTexts中
+    // languageModule中的loadTranslations函数会确保原文被保留
     await translationStore.loadTranslations(langCode);
     filterTranslations();
     ElMessage.success(t('dictionary.languageChanged', { language: translationStore.availableLanguages.find(lang => lang.code === langCode)?.name || langCode }));
@@ -246,6 +252,7 @@ const handleImportText = async (text: string, format: "json" | "plainText"): Pro
         
         <el-tab-pane :label="t('stats.title')" name="statistics">
           <TranslationStats
+              :current-languages="translationStore.currentLanguage"
               :total-items="translationStore.translations.length"
               :translated-count="translationStore.translatedCount"
               :all-languages-stats="allLanguagesStats"

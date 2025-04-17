@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import MainLayout from './layouts/MainLayout.vue'
+import TranslationView from './views/TranslationView.vue'
 </script>
 
 <template>
   <main-layout>
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
+    <transition name="fade" mode="out-in">
+      <translation-view />
+    </transition>
   </main-layout>
 </template>
 

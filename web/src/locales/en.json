@@ -51,7 +51,7 @@
     "plainText": "Plain Text",
     "content": "Content",
     "dragFile": "Drag file here or click to upload",
-    "supportFormats": "Supported formats: JSON, ZIP",
+    "supportFormats": "Supported formats: JSON",
     "url": "URL Address",
     "urlPlaceholder": "Enter URL of JSON file",
     "import": "Import",
