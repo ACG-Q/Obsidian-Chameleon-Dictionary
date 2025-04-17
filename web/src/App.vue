@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MainLayout from './layouts/MainLayout.vue'
-import TranslationView from './views/translationview.vue'
+// 将 translationview.vue 改为 TranslationView.vue
+import TranslationView from './views/TranslationView.vue'
 </script>
 
 <template>
