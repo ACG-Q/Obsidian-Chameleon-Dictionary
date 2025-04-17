@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MainLayout from './layouts/MainLayout.vue'
-import TranslationView from './views/TranslationView.vue'
+import TranslationView from './views/translationview.vue'
 </script>
 
 <template>

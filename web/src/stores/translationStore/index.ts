@@ -9,9 +9,9 @@
  * - 导入导出：处理翻译数据的导入和导出
  */
 import { defineStore } from 'pinia'
-import { useLanguageModule } from './languageModule'
+import { useLanguageModule } from './languagemodule'
 import { useTranslationOperationModule } from './operationModule'
-import { useImportExportModule } from './importExportModule'
+import { useImportExportModule } from './importexportmodule'
 import { useCoreModule } from './coreModule'
 
 /**

@@ -4,7 +4,7 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './style.css'
 import './assets/styles/main.scss'
-import App from './App.vue'
+import App from './app.vue'
 import i18n from './i18n'
 
 // 导入Pinia状态管理
