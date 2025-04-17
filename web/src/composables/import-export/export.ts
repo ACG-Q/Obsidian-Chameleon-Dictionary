@@ -85,7 +85,7 @@ export const exportToZipFile = async (filename: string = 'translations.zip', inc
     if (includeReadme) {
       const readmeContent = `# Obsidian Chameleon Dictionary 翻译文件包
 
-这是由 [Obsidian Chameleon Dictionary](https://github.com/your-repo-link) 导出的翻译文件包。
+这是由 [Obsidian Chameleon Dictionary](https://github.com/ACG-Q/Obsidian-Chameleon-Dictionary) 导出的翻译文件包。
 
 ## 文件内容
 
