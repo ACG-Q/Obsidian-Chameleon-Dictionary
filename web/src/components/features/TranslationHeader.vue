@@ -51,7 +51,6 @@ import { ref } from 'vue';
 import type { Language } from '../../stores/translationStore';
 import { Upload, Download } from '@element-plus/icons-vue';
 import { useI18n } from 'vue-i18n';
-import config from '../../config/config';
 
 // 使用i18n
 const { t } = useI18n();

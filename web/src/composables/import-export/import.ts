@@ -36,12 +36,8 @@ export const importTextContent = async (
       try {
         const jsonData = JSON.parse(text)
         updateProgress(50)
-        const { data, format: detectedFormat } = parseJsonData(jsonData)
+        const { data } = parseJsonData(jsonData)
         parsedData = data
-        // 显示导入格式信息 (已在 parseJsonData 中处理)
-        // if (detectedFormat === 'multiLanguage') {
-        //   ElMessage.info('导入多语言字典格式')
-        // }
       } catch (e) {
         ElMessage.error('JSON格式不正确')
         return { importedCount: 0, newCount: 0, updatedCount: 0, errors: [{ key: 'error', message: '无效的JSON格式' }] }
@@ -96,12 +92,7 @@ export const importFromUrl = async (
     updateProgress(70)
     
     // 解析JSON数据
-    const { data: parsedData, format } = parseJsonData(data)
-    
-    // 显示导入格式信息 (已在 parseJsonData 中处理)
-    // if (format === 'multiLanguage') {
-    //   ElMessage.info('导入多语言字典格式')
-    // }
+    const { data: parsedData } = parseJsonData(data)
     
     return finishImport(parsedData, updateProgress)
   } catch (error: any) {
@@ -132,7 +123,6 @@ export const handleFileUpload = async (
     }
     
     const fileExt = file.name.split('.').pop()?.toLowerCase() || ''
-    let importedItems: Translation[] = []
     
     if (fileExt === 'json') {
       // 处理JSON文件
@@ -181,12 +171,7 @@ export const handleFileUpload = async (
           const jsonData = JSON.parse(jsonContent)
           updateProgress(80)
           
-          const { data: parsedData, format } = parseJsonData(jsonData)
-          
-          // 显示导入格式信息 (已在 parseJsonData 中处理)
-          // if (format === 'multiLanguage') {
-          //   ElMessage.info('导入多语言字典格式')
-          // }
+          const { data: parsedData } = parseJsonData(jsonData)
           
           // 将解析后的数据传递给 finishImport
           return finishImport(parsedData, updateProgress)
