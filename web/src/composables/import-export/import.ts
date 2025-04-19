@@ -7,6 +7,7 @@ import JSZip from 'jszip'
 import type { Translation } from '../../stores/translationStore'
 import type { ImportResult } from './types'
 import { handleImportError, parseJsonData, finishImport } from './utils'
+import { useTranslationStore } from '../../stores'
 
 /**
  * 导入文本内容
@@ -28,35 +29,38 @@ export const importTextContent = async (
   try {
     updateProgress(10)
     
-    let importedItems: Translation[] = []
+    let parsedData: Record<string, Translation[]> = {}
     
     // 解析导入内容
     if (format === 'json') {
       try {
         const jsonData = JSON.parse(text)
         updateProgress(50)
-        const { items, format } = parseJsonData(jsonData)
-        importedItems = items
-        // 显示导入格式信息
-        if (format === 'multiLanguage') {
-          ElMessage.info('导入多语言字典格式')
-        }
+        const { data, format: detectedFormat } = parseJsonData(jsonData)
+        parsedData = data
+        // 显示导入格式信息 (已在 parseJsonData 中处理)
+        // if (detectedFormat === 'multiLanguage') {
+        //   ElMessage.info('导入多语言字典格式')
+        // }
       } catch (e) {
         ElMessage.error('JSON格式不正确')
         return { importedCount: 0, newCount: 0, updatedCount: 0, errors: [{ key: 'error', message: '无效的JSON格式' }] }
       }
     } else {
       // 纯文本格式，每行一个条目
-      importedItems = text.split('\n')
+      const translationStore = useTranslationStore() // 需要引入 useTranslationStore
+      const currentLang = translationStore.currentLanguage
+      const items = text.split('\n')
         .filter(line => line.trim())
         .map(line => ({
           key: line.trim(),
           value: '',
           sourceText: line.trim(),
         }))
+      parsedData[currentLang] = items // 将纯文本视为当前语言的数据
     }
     
-    return finishImport(importedItems, updateProgress)
+    return finishImport(parsedData, updateProgress)
   } catch (error: any) {
     return handleImportError(error)
   }
@@ -92,14 +96,14 @@ export const importFromUrl = async (
     updateProgress(70)
     
     // 解析JSON数据
-    const { items, format } = parseJsonData(data)
+    const { data: parsedData, format } = parseJsonData(data)
     
-    // 显示导入格式信息
-    if (format === 'multiLanguage') {
-      ElMessage.info('导入多语言字典格式')
-    }
+    // 显示导入格式信息 (已在 parseJsonData 中处理)
+    // if (format === 'multiLanguage') {
+    //   ElMessage.info('导入多语言字典格式')
+    // }
     
-    return finishImport(items, updateProgress)
+    return finishImport(parsedData, updateProgress)
   } catch (error: any) {
     return handleImportError(error)
   }
@@ -141,9 +145,10 @@ export const handleFileUpload = async (
         const jsonData = JSON.parse(text)
         updateProgress(60)
         
-        const { items } = parseJsonData(jsonData)
-        importedItems = items
-        updateProgress(80)
+        const { data: parsedData } = parseJsonData(jsonData)
+        // 将解析后的数据传递给 finishImport
+        return finishImport(parsedData, updateProgress)
+        // updateProgress(80) // finishImport 会处理最后的进度
       } catch (parseError: any) {
         return handleImportError(parseError, 'JSON格式不正确')
       }
@@ -176,13 +181,15 @@ export const handleFileUpload = async (
           const jsonData = JSON.parse(jsonContent)
           updateProgress(80)
           
-          const { items, format } = parseJsonData(jsonData)
-          importedItems = items
+          const { data: parsedData, format } = parseJsonData(jsonData)
           
-          // 显示导入格式信息
-          if (format === 'multiLanguage') {
-            ElMessage.info('导入多语言字典格式')
-          }
+          // 显示导入格式信息 (已在 parseJsonData 中处理)
+          // if (format === 'multiLanguage') {
+          //   ElMessage.info('导入多语言字典格式')
+          // }
+          
+          // 将解析后的数据传递给 finishImport
+          return finishImport(parsedData, updateProgress)
         } else {
           throw new Error('ZIP文件中未找到JSON文件')
         }
@@ -196,7 +203,8 @@ export const handleFileUpload = async (
       )
     }
     
-    return finishImport(importedItems, updateProgress)
+    // 不再需要此处的 finishImport 调用，已在 JSON 和 ZIP 处理块内部调用
+    // return finishImport(importedItems, updateProgress)
   } catch (error: any) {
     return handleImportError(error)
   }

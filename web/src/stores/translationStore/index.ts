@@ -30,7 +30,28 @@ export const useTranslationStore = defineStore('translation', () => {
   
   // 导入导出模块：处理翻译数据的导入和导出
   const importExportModule = useImportExportModule(coreModule)
-  
+
+  /**
+   * 刷新当前显示的翻译列表
+   * 通常在导入或语言切换后调用
+   */
+  const refreshTranslations = () => {
+    const langData = coreModule.languageData[coreModule.currentLanguage.value]
+    if (langData) {
+      coreModule.translations.value = [...langData] // 使用扩展运算符创建新数组以触发响应式更新
+    } else {
+      // 如果当前语言数据不存在（可能在导入后发生），则基于原文创建空翻译
+      coreModule.translations.value = Object.keys(coreModule.sourceTexts.value).map(key => ({
+        key,
+        sourceText: coreModule.sourceTexts.value[key],
+        value: ''
+      }))
+      // 同时在 languageData 中创建该语言的条目
+      coreModule.languageData[coreModule.currentLanguage.value] = [...coreModule.translations.value]
+    }
+    console.log(`Translations refreshed for language: ${coreModule.currentLanguage.value}`)
+  }
+
   return {
     // 从核心模块导出
     ...coreModule,
@@ -42,7 +63,9 @@ export const useTranslationStore = defineStore('translation', () => {
     ...operationModule,
     
     // 从导入导出模块导出
-    ...importExportModule
+    ...importExportModule,
+    // 新增方法
+    refreshTranslations
   }
 })
 
