@@ -52,7 +52,7 @@ async function loadDictionary(): Promise<void> {
   try {
     translationStore.loading = true;
     // 导入字典文件，这会提取原文和译文
-    await importExport.importFromUrl("https://github.com/ACG-Q/Obsidian-Chameleon-Dictionary/raw/refs/heads/main/dictionary.json")
+    await importExport.importFromUrl("https://raw.githubusercontent.com/ACG-Q/Obsidian-Chameleon-Dictionary/refs/heads/main/dictionary.json")
 
     // 确保原文被正确保存到sourceTexts中，并加载当前语言的翻译
     // 这样即使切换语言，原文也会保留
