@@ -106,20 +106,37 @@ export function useTranslationOperationModule(coreModule: ReturnType<typeof impo
    * @returns 是否删除成功
    */
   const deleteTranslation = (item: Translation): boolean => {
-    if (!item.key) return false
-    
-    // 查找并删除
-    const index = translations.value.findIndex(t => t.key === item.key)
-    if (index === -1) return false
-    
-    translations.value.splice(index, 1)
-    
-    // 更新语言数据
-    if (currentLanguage.value) {
-      languageData[currentLanguage.value] = [...translations.value]
+    if (!item?.key || typeof item.key !== 'string') return false
+
+    try {
+      let deleted = false
+      const keyToDelete = item.key
+
+      // 遍历所有语言，删除对应 key
+      for (const [langCode, langList] of Object.entries(languageData)) {
+        const index = langList.findIndex(t => t.key === keyToDelete)
+        if (index !== -1) {
+          langList.splice(index, 1)
+          deleted = true
+          
+          // 如果是当前语言，同步更新 translations
+          if (currentLanguage.value === langCode) {
+            translations.value = [...langList]
+          }
+        }
+      }
+
+      // 删除 sourceTexts 中的原文
+      if (keyToDelete in sourceTexts.value) {
+        delete sourceTexts.value[keyToDelete]
+        deleted = true
+      }
+
+      return deleted
+    } catch (error) {
+      console.error('删除翻译时出错:', error)
+      return false
     }
-    
-    return true
   }
   
   /**

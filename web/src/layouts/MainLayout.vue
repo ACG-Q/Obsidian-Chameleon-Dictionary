@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import config from '../config/config'
+
+// Github 仓库地址
+const githubRepo = `https://${config.repository.host}/${config.repository.owner}/${config.repository.repo}`
+// 问题反馈地址
+const issueUrl = `${githubRepo}/issues`
+
 
 const { t, locale } = useI18n()
 
@@ -49,7 +56,31 @@ const changeLocale = (lang: string) => {
       </el-main>
       
       <el-footer class="app-footer">
-        <p>Obsidian Chameleon Dictionary © {{ new Date().getFullYear() }}</p>
+        <div class="footer-content">
+          <p>Obsidian Chameleon Dictionary © {{ new Date().getFullYear() }}</p>
+          <div class="footer-links">
+            <el-link :href="githubRepo" target="_blank" type="primary" class="footer-link-item">
+              <el-icon class="footer-link-icon">
+                <Document />
+              </el-icon>
+              <span>GitHub仓库</span>
+            </el-link>
+            <span class="divider">|</span>
+            <el-link :href="issueUrl" target="_blank" type="primary" class="footer-link-item">
+              <el-icon class="footer-link-icon">
+                <Warning />
+              </el-icon>
+              <span>问题反馈</span>
+            </el-link>
+            <span class="divider">|</span>
+            <span class="footer-link-item version-info">
+              <el-icon class="footer-link-icon">
+                <InfoFilled />
+              </el-icon>
+              <span>版本: {{ config.version }}</span>
+            </span>
+          </div>
+        </div>
       </el-footer>
     </el-container>
   </div>
@@ -107,5 +138,50 @@ const changeLocale = (lang: string) => {
   padding: 15px 0;
   font-size: 0.9rem;
   border-top: 1px solid var(--el-border-color-lighter);
+  height: auto;
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    .footer-link-item {
+      display: inline-flex;
+      align-items: center;
+      font-size: 1em;
+      line-height: 1;
+      padding: 0 4px;
+
+      &.version-info {
+        color: var(--el-text-color-secondary);
+        cursor: default;
+      }
+    }
+
+    .footer-link-icon {
+      font-size: 1.1em;
+      margin-right: 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    .divider {
+      color: var(--el-text-color-placeholder);
+      font-size: 1.1em;
+      padding: 0 2px;
+      user-select: none;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      height: 1.2em;
+    }
+  }
 }
 </style>

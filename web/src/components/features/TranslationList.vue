@@ -30,7 +30,7 @@
       :data="paginatedData"
       style="width: 100%"
       border
-      max-height="500"
+      max-height="390"
       v-loading="loading"
       stripe
       highlight-current-row
@@ -40,7 +40,6 @@
         <template #default="{row}">
           <div class="translation-list__cell">
             <div>{{ row.key }}</div>
-            <div class="translation-list__source-text">{{ row.sourceText || translationStore.getSourceText(row.key) }}</div>
           </div>
         </template>
       </el-table-column>

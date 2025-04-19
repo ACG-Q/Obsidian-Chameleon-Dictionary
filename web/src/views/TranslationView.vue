@@ -11,6 +11,7 @@ import ExportDialog from '../components/features/ExportDialog.vue'
 import {useTranslationStore} from '../stores'
 import {useImportExport} from '../composables'
 import type {LanguageStats, Translation} from '../stores/translationStore'
+import config from '../config/config'
 
 const { t } = useI18n()
 const translationStore = useTranslationStore()
@@ -34,6 +35,9 @@ const paginatedData = ref<Translation[]>([])
 // 
 const allLanguagesStats = ref<LanguageStats[]>([])
 
+// 默认字典URL地址
+const defualtDictionaryUrl = `https://${config.repository.raw}/${config.repository.owner}/${config.repository.repo}/refs/heads/${config.repository.branch}/${config.repository.path}`
+
 // 初始化
 onMounted(async () => {
   await loadDictionary()
@@ -52,7 +56,7 @@ async function loadDictionary(): Promise<void> {
   try {
     translationStore.loading = true;
     // 导入字典文件，这会提取原文和译文
-    await importExport.importFromUrl("https://raw.githubusercontent.com/ACG-Q/Obsidian-Chameleon-Dictionary/refs/heads/main/dictionary.json")
+    await importExport.importFromUrl(defualtDictionaryUrl)
 
     // 确保原文被正确保存到sourceTexts中，并加载当前语言的翻译
     // 这样即使切换语言，原文也会保留
@@ -292,10 +296,6 @@ const handleImportText = async (text: string, format: "json" | "plainText"): Pro
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.translation-content {
-  margin-bottom: 20px;
 }
 
 .glass-effect {

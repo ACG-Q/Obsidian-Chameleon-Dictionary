@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import type { LanguageStats } from '../../stores/translationStore';
+import { useTranslationStore, type LanguageStats } from '../../stores/translationStore';
 
 // 使用i18n
 const { t } = useI18n();
+
+const { availableLanguages } = useTranslationStore();
 
 interface IProps {
   totalItems: number;
@@ -29,12 +31,14 @@ const progressPercentage = computed(() => {
 const progressFormat = (percentage: number) => {
   return `${percentage}% (${props.translatedCount}/${props.totalItems})`;
 };
+
+const languageName = availableLanguages.filter(lang => lang.code === props.currentLanguages)[0].name;
 </script>
 
 <template>
   <div class="translation-stats function-card enhanced-card">
     <div class="function-card__header">
-      <h3 class="function-card__title">{{ t('stats.title') }} -- {{ props.currentLanguages  }}</h3>
+      <h3 class="function-card__title">{{ t('stats.title') }} -- {{ languageName }}</h3>
     </div>
     
     <div class="function-card__content">
